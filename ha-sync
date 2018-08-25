@@ -1,0 +1,9 @@
+- name: Sync configuration from device to group
+  bigip_configsync_action:
+    device_group: HA_Group
+    sync_device_to_group: yes
+    server: bigip-a.example.net
+    user: root
+    password: default
+    validate_certs: no
+  delegate_to: localhost
