@@ -2,14 +2,16 @@
 - name: Create a VIP, pool, pool members, and nodes
   hosts: 192.168.2.101
   connection: local
+  
   tasks:
-   - name: Create a pool
-     bigip_pool:
-         lb_method: ratio-member
-         name: mypool
-         password: default
-         server: 192.168.2.101
-         slow_ramp_time: 120
-         user: root
-         validate_certs: no
-     delegate_to: localhost
+      - name: Create a pool
+        bigip_pool:
+            server: "192.168.2.101"
+            user: "root"
+            password: "default"
+            name: "web_pool"
+            monitor_type: "and_list"
+            monitors:
+                - "http"
+            lb_method: "ratio-member"
+            validate_certs: "false"
