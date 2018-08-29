@@ -1,0 +1,8 @@
+- name: run show version on remote devices
+  bigip_command:
+    commands: show sys version
+    server: 192.168.2.101
+    password: default
+    user: root
+    validate_certs: no
+  delegate_to: localhost
