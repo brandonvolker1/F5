@@ -8,8 +8,8 @@
         bigip_node:
             host: 10.10.10.10
             name: node-1
-            password: default
+            password: admin
             server: 192.168.2.101
-            user: root
+            user: admin
             validate_certs: no
         delegate_to: localhost
