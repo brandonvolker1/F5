@@ -4,14 +4,12 @@
   connection: local
   
   tasks:
-      - name: Create a pool
-        bigip_pool:
-            server: "192.168.2.101"
-            user: "root"
-            password: "default"
-            name: "web_pool"
-            monitor_type: "and_list"
-            monitors:
-                - "http"
-            lb_method: "ratio-member"
-            validate_certs: "false"
+      - name: Create node1
+        bigip_node:
+            host: 10.10.10.10
+            name: node-1
+            password: default
+            server: 192.168.2.101
+            user: root
+            validate_certs: no
+        delegate_to: localhost
