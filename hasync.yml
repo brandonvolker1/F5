@@ -2,8 +2,8 @@
 - name: Create a VIP, pool, pool members, and nodes
   hosts: 192.168.2.101
   connection: local
-  tasks:
   
+  tasks:
   - name: Sync configuration from device to group
     bigip_configsync_action:
       device_group: HA_Group
