@@ -4,6 +4,7 @@
   connection: local
 
   tasks:
+  
   - name: Sync configuration from device to group
     bigip_configsync_action:
       device_group: HA_Group
