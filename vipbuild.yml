@@ -9,7 +9,7 @@
             host: 10.10.10.17
             name: node-20
             password: admin
-            server: 192.168.2.101
+            server: 192.168.2.17
             user: admin
             validate_certs: no
         delegate_to: localhost
@@ -22,7 +22,7 @@
             password: admin
             pool: web
             port: 80
-            server: 192.168.2.101
+            server: 192.168.2.17
             user: admin
             validate_certs: no
         delegate_to: localhost
