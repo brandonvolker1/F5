@@ -3,13 +3,14 @@
   hosts: 192.168.2.101
   gather_facts: false
   
-  tasks:
-  - name: Sync configuration from device to group
-    bigip_configsync_action:
-     server: 192.168.2.101
-     device_group: HA_Group
-     sync_device_to_group: yes
-     user: admin
-     password: admin
-     validate_certs: no
-    delegate_to: localhost
+- name: Check sync status
+  bigip_command:
+    server: 192.168.2.101
+    user: "admin"
+    password: "admin"
+    commands:
+     - show cm sync-status
+    wait_for:
+     - result[0] contains "green"
+    match: all
+   delegate_to: localhost
