@@ -3,8 +3,8 @@
   bigip_configsync_action:
     device_group: HA_Group
     sync_device_to_group: yes
-    server: bigip-a.example.net
-    user: root
-    password: default
+    server:192.168.2.101
+    user: admin
+    password: admin
     validate_certs: no
   delegate_to: localhost
