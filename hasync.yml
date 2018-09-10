@@ -11,4 +11,4 @@
     password: "admin"
     commands:
      - run /cm config-sync to-group device-group-failover-234ee019214c
- delegate_to: localhost
+  delegate_to: localhost
