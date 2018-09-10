@@ -4,7 +4,7 @@
   gather_facts: false
   tasks:
   
-  - name: Sync configuration from device to group
+- name: Sync configuration from device to group
     bigip_configsync_action:
        device_group: device-group-failover-234ee019214c
        sync_device_to_group: yes
