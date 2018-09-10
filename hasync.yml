@@ -3,12 +3,11 @@
   hosts: 192.168.2.101
   gather_facts: false
   
-- name: Sync config from device TO group
-  bigip_command:
-    server: 192.168.2.101
-    user: "admin"
-    password: "admin"
-    commands:
-     - run /cm config-sync to-group device-group-failover-234ee019214c
-    match: all
-  delegate_to: localhost
+   - name: Sync config from device TO group
+     bigip_command:
+       server: 192.168.2.101
+       user: "admin"
+       password: "admin"
+       commands:
+        - run /cm config-sync to-group device-group-failover-234ee019214c
+     delegate_to: localhost
