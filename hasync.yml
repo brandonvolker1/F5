@@ -3,14 +3,12 @@
   hosts: 192.168.2.101
   gather_facts: false
   
-- name: Check sync status
+- name: Sync config from device TO group
   bigip_command:
     server: 192.168.2.101
     user: "admin"
     password: "admin"
     commands:
-     - show cm sync-status
-    wait_for:
-     - result[0] contains "green"
+     - run /cm config-sync to-group device-group-failover-234ee019214c
     match: all
   delegate_to: localhost
