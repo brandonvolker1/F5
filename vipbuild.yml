@@ -5,8 +5,8 @@
   
   tasks:
   
-    - name: Create a node
-      bigip_node:
+   - name: Create a node
+     bigip_node:
            host: 20.20.20.20
            name: number1_node
            password: admin
@@ -15,21 +15,21 @@
            validate_certs: no
       delegate_to: localhost
      
-     - name: Create pool
+    - name: Create pool
         bigip_pool:
-             server: 192.168.2.101
-             user: admin
-             password: admin
-             state: present
-             name: this_awesome_pool_01
-             partition: Common
-             lb_method: round-robin
-             monitor_type: and_list
-             monitors:
-               - http
+            server: 192.168.2.101
+            user: admin
+            password: admin
+            state: present
+            name: this_awesome_pool_01
+            partition: Common
+            lb_method: round-robin
+            monitor_type: and_list
+            monitors:
+              - http
         delegate_to: localhost
  
-      - name: Add pool member
+     - name: Add pool member
         bigip_pool_member:
              description: webserver-1
              host: 20.20.20.20
