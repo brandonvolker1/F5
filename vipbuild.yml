@@ -12,8 +12,7 @@
             server: 192.168.2.101
             user: admin
             validate_certs: no
-        delegate_to: localhost
-        
+               
          - name: Create pool
            bigip_pool:
              lb_method: ratio-member
@@ -23,8 +22,7 @@
              slow_ramp_time: 120
              user: admin
              validate_certs: no
-         delegate_to: localhost
-         
+                  
          - name: Add nodes to pool
            bigip_pool_member:
                description: webserver-1
