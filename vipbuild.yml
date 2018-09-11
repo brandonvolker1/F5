@@ -11,7 +11,7 @@
              user: admin
              password: admin
              state: present
-             name: this_awesome_pool2
+             name: this_awesome_pool_0
              partition: Common
              lb_method: round-robin
              monitor_type: and_list
@@ -22,12 +22,29 @@
       - name: Add pool member
         bigip_pool_member:
              description: webserver-1
-             host: 10.10.10.125
-             name: node-267
+             host: 10.10.10.10
+             name: node-1
              password: admin
-             pool: this_awesome_pool2
+             pool: this_awesome_pool_0
              port: 80
              server: 192.168.2.101
              user: admin
              validate_certs: no
         delegate_to: localhost
+        
+        - name: Create a VIP
+          bigip_virtual_server:
+              description: VIP for pool
+              destination: 170.10.213.76
+              password: admin
+              name: New_VIP_1
+              pool: this_awesome_pool_0
+              port: 443
+              server: 192.168.2.101
+              snat: Automap
+              user: admin
+              all_profiles:
+                   - http
+                   - clientssl
+              validate_certs: no
+           delegate_to: localhost
