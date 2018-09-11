@@ -9,7 +9,7 @@
             host: 10.10.10.183
             name: node-22
             password: admin
-            server: 192.168.2.17
+            server: 192.168.2.101
             user: admin
             validate_certs: no
         delegate_to: localhost
