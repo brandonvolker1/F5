@@ -21,12 +21,13 @@
  
       - name: Add pool member
         bigip_pool_member:
+             description: webserver-1
+             hosts: 10.10.10.125
+             name: node-267
+             password: admin
+             pool: this_awesome_pool2
+             port: 80
              server: 192.168.2.101
              user: admin
-             password: admin
-             state: present
-             pool: this_awesome_pool2
-             partition: Common
-             host: 10.10.10.125
-             port: 80
+             validate_certs: no
         delegate_to: localhost
