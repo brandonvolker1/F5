@@ -22,7 +22,7 @@
       - name: Add pool member
         bigip_pool_member:
              server: 192.168.2.101
-             validate_certs: no
+             validate_certs: "false"
              user: admin
              password: admin
              state: present
