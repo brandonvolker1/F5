@@ -4,14 +4,23 @@
   connection: local
   
   tasks:
-  
+      - name: Create node
+        bigip_node:
+            host: 12.12.12.12
+            name: node-new
+            password: admin
+            server: 192.168.2.101
+            user: admin
+            validate_certs: no
+        delegate_to: localhost
+        
       - name: Create pool
         bigip_pool:
              server: 192.168.2.101
              user: admin
              password: admin
              state: present
-             name: this_awesome_pool_0
+             name: this_awesome_pool_33
              partition: Common
              lb_method: round-robin
              monitor_type: and_list
@@ -22,10 +31,10 @@
       - name: Add pool member
         bigip_pool_member:
              description: webserver-1
-             host: 10.10.10.10
-             name: node-1
+             host: 12.12.12.12
+             name: node-new
              password: admin
-             pool: this_awesome_pool_0
+             pool: this_awesome_pool_33
              port: 80
              server: 192.168.2.101
              user: admin
@@ -38,7 +47,7 @@
             destination: 170.10.213.76
             password: admin
             name: New_VIP_1
-            pool: this_awesome_pool_0
+            pool: this_awesome_pool_33
             port: 443
             server: 192.168.2.101
             snat: Automap
