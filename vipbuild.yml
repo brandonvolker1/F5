@@ -14,6 +14,6 @@
              state: present
              pool: this_awesome_pool2
              partition: Common
-             host: "{{ ansible_default_ipv4['address'] }}"
+             host: 10.10.10.125
              port: 443
         delegate_to: localhost
