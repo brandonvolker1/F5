@@ -11,8 +11,9 @@
             user: admin
             password: admin
             state: present
-            name: my-pool
+            name: monitored_pool
             partition: Common
-            lb_method: least-connections-member
-            slow_ramp_time: 120
+            lb_method: round-robin
+            monitors:
+              - tcp
        delegate_to: localhost
