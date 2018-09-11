@@ -6,7 +6,7 @@
   tasks:
   
       - name: Create pool
-	bigip_pool:
+	 bigip_pool:
 	     server: 192.168.2.101
 	     user: admin
 	     password: admin
