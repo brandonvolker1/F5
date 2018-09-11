@@ -4,16 +4,7 @@
   connection: local
   
   tasks:
-      - name: Create node300
-        bigip_node:
-            host: 10.10.10.233
-            name: node-300
-            password: admin
-            server: 192.168.2.101
-            user: admin
-            validate_certs: no
-        delegate_to: localhost
-     
+   
      - name: Create pool
         bigip_pool:
             server: 192.168.2.101
