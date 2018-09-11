@@ -14,7 +14,7 @@
             name: monitored_pool
             partition: Common
             lb_method: round-robin
-            monitor_type: and_list
+            monitor_type:single
             monitors:
               - http
        delegate_to: localhost
