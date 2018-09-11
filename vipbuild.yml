@@ -11,7 +11,7 @@
             user: admin
             password: admin
             state: present
-            name: monitored_pool
+            name: this_awesome_pool
             partition: Common
             lb_method: round-robin
             monitor_type: and_list
