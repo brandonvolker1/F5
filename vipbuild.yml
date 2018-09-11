@@ -22,7 +22,7 @@
       - name: Add pool member
         bigip_pool_member:
              description: webserver-1
-             hosts: 10.10.10.125
+             host: 10.10.10.125
              name: node-267
              password: admin
              pool: this_awesome_pool2
