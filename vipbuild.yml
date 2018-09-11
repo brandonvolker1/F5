@@ -2,7 +2,6 @@
 - name: Create a VIP, pool, pool members, and nodes
   hosts: 192.168.2.101
   connection: local
-  validate_certs: no
   
   tasks:
   
@@ -23,6 +22,7 @@
       - name: Add pool member
         bigip_pool_member:
              server: 192.168.2.101
+             validate_certs: no
              user: admin
              password: admin
              state: present
