@@ -4,17 +4,16 @@
   connection: local
   
   tasks:
-   
-     - name: Create pool
-       bigip_pool:
-            server: 192.168.2.101
-            user: admin
-            password: admin
-            state: present
-            name: this_awesome_pool
-            partition: Common
-            lb_method: round-robin
-            monitor_type: and_list
-            monitors:
-              - http
-       delegate_to: localhost
+  
+       
+      - name: Add pool member
+        bigip_pool_member:
+             server: 192.168.2.101
+             user: admin
+             password: admin
+             state: present
+             pool: this_awesome_pool2
+             partition: Common
+             host: "{{ ansible_default_ipv4['address'] }}"
+             port: 443
+        delegate_to: localhost
