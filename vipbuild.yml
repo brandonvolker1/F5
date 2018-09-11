@@ -6,17 +6,17 @@
   tasks:
   
       - name: Create pool
-	 bigip_pool:
-	      server: 192.168.2.101
-	      user: admin
-	      password: admin
-	      state: present
-	      name: this_awesome_pool
-	      partition: Common
-	      lb_method: round-robin
-	      monitor_type: and_list
-	      monitors:
-	        - http
+        bigip_pool:
+             server: 192.168.2.101
+             user: admin
+             password: admin
+             state: present
+             name: this_awesome_pool
+             partition: Common
+             lb_method: round-robin
+             monitor_type: and_list
+             monitors:
+               - http
 	delegate_to: localhost
  
       - name: Add pool member
