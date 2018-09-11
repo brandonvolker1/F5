@@ -17,7 +17,7 @@
              monitor_type: and_list
              monitors:
                - http
-	delegate_to: localhost
+        delegate_to: localhost
  
       - name: Add pool member
         bigip_pool_member:
