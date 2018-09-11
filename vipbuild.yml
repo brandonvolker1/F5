@@ -6,10 +6,22 @@
   tasks:
       - name: Create node20
         bigip_node:
-            host: 10.10.10.124
-            name: node-266
+            host: 10.10.10.125
+            name: node-267
             password: admin
             server: 192.168.2.101
             user: admin
             validate_certs: no
+        delegate_to: localhost
+        
+      - name: Create pool
+        bigip_pool:
+            server: 192.168.2.101
+            user: admin
+            password: admin
+            state: present
+            name: my-pool
+            partition: Common
+            lb_method: least-connections-member
+            slow_ramp_time: 120
         delegate_to: localhost
