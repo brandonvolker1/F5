@@ -11,7 +11,7 @@
              user: admin
              password: admin
              state: present
-             name: this_awesome_pool
+             name: this_awesome_pool2
              partition: Common
              lb_method: round-robin
              monitor_type: and_list
@@ -28,5 +28,5 @@
              pool: this_awesome_pool2
              partition: Common
              host: 10.10.10.125
-             port: 443
+             port: 80
         delegate_to: localhost
