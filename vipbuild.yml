@@ -1,5 +1,11 @@
-                    
-      - name: Create pool
+- name: Create a VIP, pool, pool members, and nodes
+  hosts: 192.168.2.101
+  connection: local
+  
+  tasks:
+                
+    
+    - name: Create pool
         bigip_pool:
              server: 192.168.2.101
              user: admin
