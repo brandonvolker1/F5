@@ -2,6 +2,11 @@
 - name: Create a VIP, pool, pool members, and nodes
   hosts: 192.168.2.101
   connection: local
+  vars:
+    host: 10.20.30.40
+    name: node-99
+    poolname: view_pool
+    vipip: 172.16.20.50
   
   tasks:
       - name: Create node
@@ -13,9 +18,6 @@
             user: admin
             validate_certs: no
         delegate_to: localhost
-        with_items:
-            - host: 10.20.30.40
-              name: node-99
                     
       - name: Create pool
         bigip_pool:
@@ -30,8 +32,6 @@
              monitors:
                - http
         delegate_to: localhost
-        with_items:
-            - poolname: view_pool
  
       - name: Add pool member
         bigip_pool_member:
@@ -62,5 +62,3 @@
                  - clientssl
             validate_certs: no
         delegate_to: localhost
-        with_items:
-            - vipip: 172.16.20.50
