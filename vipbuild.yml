@@ -4,6 +4,19 @@
   connection: local
   
   tasks:
+      - name: Create node
+        bigip_node:
+            host: "{{ item.nodeip }}"
+            name: "{{ item.nodename }}"
+            password: admin
+            server: 192.168.2.101
+            user: admin
+            validate_certs: no
+        delegate_to: localhost
+        with_items:
+            - nodeip: 15.48.29.22
+            - nodename: MyNodeIsHere
+            
       - name: Create pool
         bigip_pool:
              server: 192.168.2.101
@@ -18,7 +31,7 @@
                - http
         delegate_to: localhost
         with_items:
-            - poolname: ProdPool_101
+            - poolname: ProdPool_1029
  
       - name: Add pool member
         bigip_pool_member:
@@ -33,8 +46,8 @@
              validate_certs: no
         delegate_to: localhost
         with_items:
-            - nodename: ProdNode_101
-              poolname: ProdPool_101
+            - nodename: ProdNode_10129
+              poolname: ProdPool_10129
         
       - name: Create a VIP
         bigip_virtual_server:
@@ -53,5 +66,5 @@
             validate_certs: no
         delegate_to: localhost
         with_items:
-            - vipip: 217.16.87.202
-              poolname: ProdPool_101
+            - vipip: 217.16.48.33
+              poolname: ProdPool_10129
