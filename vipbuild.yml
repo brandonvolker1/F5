@@ -15,4 +15,4 @@
         delegate_to: localhost
         with_items:
             - host: 29.37.28.38
-            - nodename: ProdNode_101
+              nodename: ProdNode_101
