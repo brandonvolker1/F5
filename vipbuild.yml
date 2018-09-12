@@ -6,35 +6,40 @@
   tasks:
       - name: Create node
         bigip_node:
-            host: 12.12.12.12
-            name: node-new
+            host: "{{ item.host }}"
+            name: "{{ item.name }}"
             password: admin
             server: 192.168.2.101
             user: admin
             validate_certs: no
         delegate_to: localhost
-        
+        with_items:
+            - host: 10.20.30.40
+              name: node-99
+                    
       - name: Create pool
         bigip_pool:
              server: 192.168.2.101
              user: admin
              password: admin
              state: present
-             name: this_awesome_pool_33
+             name: "{{ item.poolname }}"
              partition: Common
              lb_method: round-robin
              monitor_type: and_list
              monitors:
                - http
         delegate_to: localhost
+        with_items:
+            - poolname: view_pool
  
       - name: Add pool member
         bigip_pool_member:
              description: webserver-1
-             host: 12.12.12.12
+             host: "{{ item.host }}"
              name: node-new
              password: admin
-             pool: this_awesome_pool_33
+             pool: "{{ item.poolname }}"
              port: 80
              server: 192.168.2.101
              user: admin
@@ -44,10 +49,10 @@
       - name: Create a VIP
         bigip_virtual_server:
             description: VIP for pool
-            destination: 170.10.213.76
+            destination: "{{ item.vipip }}"
             password: admin
             name: New_VIP_1
-            pool: this_awesome_pool_33
+            pool: "{{ item.poolname }}"
             port: 443
             server: 192.168.2.101
             snat: Automap
@@ -57,3 +62,5 @@
                  - clientssl
             validate_certs: no
         delegate_to: localhost
+        with_items:
+            - vipip: 172.16.20.50
