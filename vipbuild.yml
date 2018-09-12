@@ -14,7 +14,7 @@
             validate_certs: no
         delegate_to: localhost
         with_items:
-            - nodeip: 15.48.29.22
+            - nodeip: 15.48.29.23
             - nodename: MyNodeIsHere
             
       - name: Create pool
@@ -31,7 +31,7 @@
                - http
         delegate_to: localhost
         with_items:
-            - poolname: ProdPool_1029
+            - poolname: ProdPool_1030
  
       - name: Add pool member
         bigip_pool_member:
@@ -46,8 +46,8 @@
              validate_certs: no
         delegate_to: localhost
         with_items:
-            - nodename: ProdNode_10129
-              poolname: ProdPool_10129
+            - nodename: MyNodeIsHere
+              poolname: ProdPool_1030
         
       - name: Create a VIP
         bigip_virtual_server:
@@ -66,5 +66,5 @@
             validate_certs: no
         delegate_to: localhost
         with_items:
-            - vipip: 217.16.48.33
-              poolname: ProdPool_10129
+            - vipip: 217.16.48.32
+              poolname: ProdPool_1030
