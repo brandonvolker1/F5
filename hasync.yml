@@ -1,16 +1,15 @@
----
+
 - name: Perform HA config-sync
   hosts: 192.168.2.101
   connection: local
-  gather_facts: false
   
   tasks:
       - name: Sync config
         bigip_configsync_action:
-            device_group: device-group-failover-234ee019214c
-            sync_device_to_group: yes
-            server: 192.168.2.101
-            user: admin
-            password: admin
-            validate_certs: no
+          device_group: device-group-failover-234ee019214c
+          sync_device_to_group: yes
+          server: 192.168.2.101
+          user: admin
+          password: admin
+          validate_certs: no
         delegate_to: localhost
