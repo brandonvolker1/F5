@@ -6,16 +6,13 @@
   tasks:
       - name: Create node
         bigip_node:
-            host: "{{ item.nodeip }}"
-            name: "{{ item.nodename }}"
+            host: 15.48.29.23
+            name: MyNodeIsHere
             password: admin
             server: 192.168.2.101
             user: admin
             validate_certs: no
         delegate_to: localhost
-        with_items:
-            - nodeip: 15.48.29.23
-            - nodename: MyNodeIsHere
             
       - name: Create pool
         bigip_pool:
@@ -23,39 +20,34 @@
              user: admin
              password: admin
              state: present
-             name: "{{ item.poolname }}"
+             name: ProdPool_1030
              partition: Common
              lb_method: round-robin
              monitor_type: and_list
              monitors:
                - http
         delegate_to: localhost
-        with_items:
-            - poolname: ProdPool_1030
  
       - name: Add pool member
         bigip_pool_member:
              description: webserver-1
-             host: "{{ item.nodename }}"
+             host: MyNodeIsHere
              name: node-new
              password: admin
-             pool: "{{ item.poolname }}"
+             pool: ProdPool_1030
              port: 80
              server: 192.168.2.101
              user: admin
              validate_certs: no
         delegate_to: localhost
-        with_items:
-            - nodename: MyNodeIsHere
-              poolname: ProdPool_1030
         
       - name: Create a VIP
         bigip_virtual_server:
             description: VIP for pool
-            destination: "{{ item.vipip }}"
+            destination: 217.16.48.32
             password: admin
             name: New_VIP_1
-            pool: "{{ item.poolname }}"
+            pool: ProdPool_1030
             port: 443
             server: 192.168.2.101
             snat: Automap
@@ -65,6 +57,3 @@
                  - clientssl
             validate_certs: no
         delegate_to: localhost
-        with_items:
-            - vipip: 217.16.48.32
-              poolname: ProdPool_1030
