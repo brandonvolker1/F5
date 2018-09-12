@@ -4,7 +4,7 @@
   connection: local
   vars:
     host: 10.20.30.40
-    name: node-99
+    nodename: node-99
     poolname: view_pool
     vipip: 172.16.20.50
   
@@ -12,7 +12,7 @@
       - name: Create node
         bigip_node:
             host: "{{ item.host }}"
-            name: "{{ item.name }}"
+            name: "{{ item.nodename }}"
             password: admin
             server: 192.168.2.101
             user: admin
@@ -36,7 +36,7 @@
       - name: Add pool member
         bigip_pool_member:
              description: webserver-1
-             host: "{{ item.host }}"
+             host: "{{ item.nodename }}"
              name: node-new
              password: admin
              pool: "{{ item.poolname }}"
