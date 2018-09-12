@@ -12,7 +12,7 @@
               - list ltm virtual
             wait_for:
               - result[0] contains BIG-IP
-              - result[1] contains my-vs
+              - result[1] contains ver
             server: 192.168.2.101
             password: admin
             user: admin
