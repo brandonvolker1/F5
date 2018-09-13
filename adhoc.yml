@@ -8,8 +8,7 @@
       - name: run show version on remote devices
         bigip_command:
             commands:
-              - show sys version
-              - list ltm virtual
+              - show sys version | grep Version
             wait_for:
               - result[0] contains Version
             server: 192.168.2.101
