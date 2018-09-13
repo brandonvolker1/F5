@@ -5,7 +5,7 @@
   
   tasks:
       - name: Sync config
-        bigip_configsync_action:
+        bigip_configsync_actions:
             device_group: device-group-failover-71da91c91c55
             sync_device_to_group: yes
             server: 192.168.2.101
