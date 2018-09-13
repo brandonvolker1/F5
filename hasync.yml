@@ -1,7 +1,7 @@
 
 - name: Perform HA config-sync
   hosts: 192.168.2.101
-  connection: ssh
+  connection: local
   
   tasks:
       - name: Sync config
@@ -9,7 +9,7 @@
             device_group: device-group-failover-71da91c91c55
             sync_device_to_group: yes
             server: 192.168.2.101
-            user: root
-            password: default
+            user: admin
+            password: admin
             validate_certs: no
         delegate_to: localhost
