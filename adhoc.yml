@@ -16,6 +16,5 @@
             password: admin
             user: admin
             validate_certs: no
-        register: print_output
         delegate_to: localhost
       - debug: var=print_output.stdout_lines
