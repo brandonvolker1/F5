@@ -1,7 +1,7 @@
 
 - name: Perform HA config-sync
   hosts: 192.168.2.101
-  connection: local
+  connection: ssh
   
   tasks:
       - name: Sync config
