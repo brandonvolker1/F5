@@ -2,7 +2,8 @@
 - name: Create a VIP, pool, pool members, and nodes
   hosts: 192.168.2.101
   connection: ssh
-  ssh_keyfile: ~/.ssh/id_rsa
+  vars:
+    ssh_keyfile: ~/.ssh/id_rsa
   
   tasks:
       - name: Create node
