@@ -8,7 +8,7 @@
         bigip_node:
             host: 15.48.29.27
             name: MyNodeIsHere1
-            password: admin
+         #   password: admin
             server: 192.168.2.101
             user: admin
             validate_certs: no
@@ -18,7 +18,7 @@
         bigip_pool:
              server: 192.168.2.101
              user: admin
-             password: admin
+          #   password: admin
              state: present
              name: ProdPool_103011
              partition: Common
@@ -33,7 +33,7 @@
              description: webserver-1
              host: 15.48.29.27
              name: MyNodeIsHere1
-             password: admin
+          #   password: admin
              pool: ProdPool_103011
              port: 80
              server: 192.168.2.101
@@ -45,7 +45,7 @@
         bigip_virtual_server:
             description: VIP for pool
             destination: 217.16.48.32
-            password: admin
+       #     password: admin
             name: New_VIP_1
             pool: ProdPool_103011
             port: 443
