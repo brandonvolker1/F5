@@ -1,7 +1,7 @@
 
 - name: Create a VIP, pool, pool members, and nodes
   hosts: 192.168.2.101
-  connection: ssh
+  connection: cli
   
   tasks:
       - name: Create node
