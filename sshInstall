@@ -1,0 +1,29 @@
+---
+- hosts: all
+  user: root
+  vars: 
+    createuser: 'ansibleremote'
+    createpassword: 'myamazingpassword'
+  tasks:
+  - name: Setup | create user
+    command: useradd -m root creates=/home/root
+    sudo: true
+ 
+  - name: Setup | set user password
+    shell: usermod -p $(echo '{{ default }}' | openssl passwd -1 -stdin) {{ root }}
+    sudo: true
+ 
+  - name: Setup | authorized key upload
+    authorized_key: user={{ root }}
+      key="{{ lookup('file', 'mypublickey.pub') }}"
+      path='/home/{{ root }}/.ssh/authorized_keys'
+      manage_dir=no
+    sudo: true
+ 
+  - name: Sudoers | update sudoers file and validate
+    lineinfile: "dest=/etc/sudoers
+      insertafter=EOF
+      line='{{ root }} ALL=(ALL) NOPASSWD: ALL'
+      regexp='{{ root }} ALL=(ALL) NOPASSWD: ALL'
+      state=present"
+    sudo: true
