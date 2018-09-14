@@ -2,8 +2,8 @@
 - hosts: all
   user: root
   vars: 
-    createuser: 'ansibleremote'
-    createpassword: 'myamazingpassword'
+    createuser: 'root'
+    createpassword: 'default'
   tasks:
   - name: Setup | create user
     command: useradd -m root creates=/home/root
