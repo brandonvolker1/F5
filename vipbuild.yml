@@ -6,8 +6,8 @@
   tasks:
       - name: Create node
         bigip_node:
-            host: 15.48.29.23
-            name: MyNodeIsHere
+            host: 15.48.29.27
+            name: MyNodeIsHere1
             password: admin
             server: 192.168.2.101
             user: admin
@@ -20,7 +20,7 @@
              user: admin
              password: admin
              state: present
-             name: ProdPool_1030
+             name: ProdPool_103011
              partition: Common
              lb_method: round-robin
              monitor_type: and_list
@@ -31,10 +31,10 @@
       - name: Add pool member
         bigip_pool_member:
              description: webserver-1
-             host: 15.48.29.23
-             name: MyNodeIsHere
+             host: 15.48.29.27
+             name: MyNodeIsHere1
              password: admin
-             pool: ProdPool_1030
+             pool: ProdPool_103011
              port: 80
              server: 192.168.2.101
              user: admin
@@ -47,7 +47,7 @@
             destination: 217.16.48.32
             password: admin
             name: New_VIP_1
-            pool: ProdPool_1030
+            pool: ProdPool_103011
             port: 443
             server: 192.168.2.101
             snat: Automap
