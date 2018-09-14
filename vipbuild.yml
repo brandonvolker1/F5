@@ -10,14 +10,14 @@
             name: MyNodeIsHere1
          #   password: admin
             server: 192.168.2.101
-            user: admin
+         #   user: admin
             validate_certs: no
         delegate_to: localhost
             
       - name: Create pool
         bigip_pool:
              server: 192.168.2.101
-             user: admin
+        #     user: admin
           #   password: admin
              state: present
              name: ProdPool_103011
@@ -37,7 +37,7 @@
              pool: ProdPool_103011
              port: 80
              server: 192.168.2.101
-             user: admin
+         #    user: admin
              validate_certs: no
         delegate_to: localhost
         
@@ -51,7 +51,7 @@
             port: 443
             server: 192.168.2.101
             snat: Automap
-            user: admin
+       #     user: admin
             all_profiles:
                  - http
                  - clientssl
