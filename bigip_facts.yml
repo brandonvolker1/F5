@@ -26,7 +26,7 @@
         bigip_node:
             host: 192.168.2.101
             name: ansible-created-node-to-sync
-            server: "{{ ansible_host }}"
+            server: 192.168.2.103
             user: admin
             password: admin
             validate_certs: no
