@@ -13,6 +13,26 @@
             user: admin
             validate_certs: no
         delegate_to: localhost
+        
+        - name: Create node
+        bigip_node:
+            host: 173.20.30.70
+            name: ProdNode10
+            password: admin
+            server: 192.168.2.101
+            user: admin
+            validate_certs: no
+        delegate_to: localhost
+        
+        - name: Create node
+        bigip_node:
+            host: 173.20.30.80
+            name: ProdNode11
+            password: admin
+            server: 192.168.2.101
+            user: admin
+            validate_certs: no
+        delegate_to: localhost
             
       - name: Create pool
         bigip_pool:
@@ -31,8 +51,8 @@
       - name: Add pool member
         bigip_pool_member:
              description: webserver-1
-             host: 173.20.30.46
-             name: ProdNode3
+             host: 173.20.30.70
+             name: ProdNode10
              password: admin
              pool: ProdPool2
              port: 80
@@ -41,6 +61,18 @@
              validate_certs: no
         delegate_to: localhost
         
+      - name: Add pool member
+        bigip_pool_member:
+             description: webserver-1
+             host: 173.20.30.46
+             name: ProdNode3
+             password: admin
+             pool: ProdPool10
+             port: 80
+             server: 192.168.2.101
+             user: admin
+             validate_certs: no
+        delegate_to: localhost
       - name: Create a VIP
         bigip_virtual_server:
             description: VIP for pool
