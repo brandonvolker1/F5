@@ -7,8 +7,8 @@
   tasks:
       - name: Create node
         bigip_node:
-            host: 171.20.30.45
-            name: ProdNode
+            host: 172.20.30.45
+            name: ProdNode4
             password: admin
             server: 192.168.2.101
             user: admin
@@ -32,8 +32,8 @@
       - name: Add pool member
         bigip_pool_member:
              description: webserver-1
-             host: 171.20.30.45
-             name: ProdNode
+             host: 172.20.30.45
+             name: ProdNode4
              password: admin
              pool: ProdPool
              port: 80
