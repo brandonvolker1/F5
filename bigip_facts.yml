@@ -12,5 +12,5 @@
             include: device,device_group,system_info
             validate_certs: no
         delegate_to: localhost
-        register: print_output
-      - debug: var=print_output.stdout_lines
+     #   register: print_output
+     # - debug: var=print_output.stdout_lines
