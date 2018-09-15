@@ -1,4 +1,3 @@
-
 - name: Create a VIP, pool, pool members, and nodes
   hosts: 192.168.2.101
   connection: local
@@ -7,8 +6,8 @@
   tasks:
       - name: Create node
         bigip_node:
-            host: 172.20.30.45
-            name: ProdNode4
+            host: 173.20.30.45
+            name: ProdNode
             password: admin
             server: 192.168.2.101
             user: admin
@@ -21,7 +20,7 @@
              user: admin
              password: admin
              state: present
-             name: ProdPool
+             name: ProdPool2
              partition: Common
              lb_method: round-robin
              monitor_type: and_list
@@ -32,10 +31,10 @@
       - name: Add pool member
         bigip_pool_member:
              description: webserver-1
-             host: 172.20.30.45
-             name: ProdNode4
+             host: 173.20.30.45
+             name: ProdNode2
              password: admin
-             pool: ProdPool
+             pool: ProdPool2
              port: 80
              server: 192.168.2.101
              user: admin
@@ -45,10 +44,10 @@
       - name: Create a VIP
         bigip_virtual_server:
             description: VIP for pool
-            destination: 217.16.48.32
+            destination: 210.16.48.32
             password: admin
             name: ProdVIP
-            pool: ProdPool
+            pool: ProdPool2
             port: 443
             server: 192.168.2.101
             snat: Automap
