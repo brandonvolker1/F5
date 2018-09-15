@@ -6,34 +6,13 @@
   tasks:
       - name: Create node
         bigip_node:
-            host: 173.20.30.46
-            name: ProdNode3
+            host: 173.20.30.46, 172.16.2.10
+            name: ProdNode3, ProdNode4
             password: admin
             server: 192.168.2.101
             user: admin
             validate_certs: no
         delegate_to: localhost
-            
-      - name: Create node
-        bigip_node:
-            host: 173.20.30.50
-            name: ProdNode33
-            password: admin
-            server: 192.168.2.101
-            user: admin
-            validate_certs: no
-        delegate_to: localhost     
-            
-       - name: Create node
-        bigip_node:
-            host: 173.20.30.51
-            name: ProdNode34
-            password: admin
-            server: 192.168.2.101
-            user: admin
-            validate_certs: no
-        delegate_to: localhost           
-   
             
       - name: Create pool
         bigip_pool:
@@ -52,35 +31,8 @@
       - name: Add pool member
         bigip_pool_member:
              description: webserver-1
-             host: 173.20.30.46
-             name: ProdNode3
-             password: admin
-             pool: ProdPool2
-             port: 80
-             server: 192.168.2.101
-             user: admin
-             validate_certs: no
-        delegate_to: localhost
-        
-      - name: Add pool member
-        bigip_pool_member:
-             description: webserver-1
-             host: 173.20.30.50
-             name: ProdNode33
-             password: admin
-             pool: ProdPool2
-             port: 80
-             server: 192.168.2.101
-             user: admin
-             validate_certs: no
-        delegate_to: localhost
-        
-        
-        - name: Add pool member
-        bigip_pool_member:
-             description: webserver-1
-             host: 173.20.30.51
-             name: ProdNode34
+             host: 173.20.30.46, 172.16.2.10
+             name: ProdNode3, ProdNode4
              password: admin
              pool: ProdPool2
              port: 80
