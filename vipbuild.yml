@@ -7,7 +7,7 @@
       - name: Create node
         bigip_node:
             host: 173.20.30.45
-            name: ProdNode
+            name: ProdNode2
             password: admin
             server: 192.168.2.101
             user: admin
