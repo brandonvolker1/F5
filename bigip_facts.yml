@@ -34,15 +34,15 @@
         notify: Sync configuration from device to group 
         
     handlers:  
-      - name: Sync configuration from device to group
-        bigip_configsync_action:
-          device_group: "{{ dg_name }}"
-          sync_device_to_group: yes
-          server: "{{ ansible_host }}"
-          user: "admin"
-          password: "admin"
-          validate_certs: no
-        delegate_to: localhost
+       - name: Sync configuration from device to group
+         bigip_configsync_action:
+           device_group: "{{ dg_name }}"
+           sync_device_to_group: yes
+           server: "{{ ansible_host }}"
+           user: "admin"
+           password: "admin"
+           validate_certs: no
+         delegate_to: localhost
         
         
         
