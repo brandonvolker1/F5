@@ -1,0 +1,15 @@
+- name: Create a VIP, pool, pool members, and nodes
+  hosts: 192.168.2.101
+  connection: local
+
+  tasks:
+      - name: Collect BIG-IP facts
+        bigip_facts:
+            server: 192.168.2.101
+            user: admin
+            password: admin
+            include: device_group, device, system_info
+            register: print_output
+            delegate_to: localhost
+            
+      - debug: var=print_output.stdout_lines
