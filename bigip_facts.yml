@@ -15,11 +15,11 @@
         
       - name: display bigip facts output
         debug:
-        msg:
-         - "Hostname: {{ system_info.system_information.host_name }}"
-         - "Mgmt IP: {{ device['/Common/' + system_info.system_information.host_name].management_address }}"
-         - "SW Version: {{ system_info.product_information.product_version }}"
-         - "Status: {{ device['/Common/' + system_info.system_information.host_name].failover_state }}"
+          msg:
+           - "Hostname: {{ system_info.system_information.host_name }}"
+           - "Mgmt IP: {{ device['/Common/' + system_info.system_information.host_name].management_address }}"
+           - "SW Version: {{ system_info.product_information.product_version }}"
+           - "Status: {{ device['/Common/' + system_info.system_information.host_name].failover_state }}"
         
         
      #   register: print_output
