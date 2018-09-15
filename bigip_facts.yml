@@ -9,7 +9,7 @@
             user: admin
             password: admin
             include: device_group, device, system_info
-            register: print_output
-            delegate_to: localhost
+        register: print_output
+        delegate_to: localhost
             
       - debug: var=print_output.stdout_lines
