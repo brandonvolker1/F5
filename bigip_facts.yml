@@ -3,6 +3,7 @@
   connection: local
 
   tasks:
+  
       - name: Collect BIG-IP facts
         bigip_facts:
             server: 192.168.2.101
@@ -10,6 +11,6 @@
             password: admin
             include: device,device_group,system_info
             validate_certs: no
-        register: print_output
         delegate_to: localhost
+        register: print_output
       - debug: var=print_output.stdout_lines
