@@ -1,28 +1,27 @@
 
 - name: Create a VIP, pool, pool members, and nodes
   hosts: 192.168.2.101
-  connection: ssh
-  vars:
-    ssh_keyfile: ~/.ssh/id_rsa
+  connection: local
+
   
   tasks:
       - name: Create node
         bigip_node:
             host: 15.48.29.27
-            name: MyNodeIsHere1
-         #   password: admin
+            name: ProdNode
+            password: admin
             server: 192.168.2.101
-         #   user: admin
+            user: admin
             validate_certs: no
         delegate_to: localhost
             
       - name: Create pool
         bigip_pool:
              server: 192.168.2.101
-        #     user: admin
-          #   password: admin
+             user: admin
+             password: admin
              state: present
-             name: ProdPool_103011
+             name: ProdPool
              partition: Common
              lb_method: round-robin
              monitor_type: and_list
@@ -34,12 +33,12 @@
         bigip_pool_member:
              description: webserver-1
              host: 15.48.29.27
-             name: MyNodeIsHere1
-          #   password: admin
-             pool: ProdPool_103011
+             name: ProdNode
+             password: admin
+             pool: ProdPool
              port: 80
              server: 192.168.2.101
-         #    user: admin
+             user: admin
              validate_certs: no
         delegate_to: localhost
         
@@ -47,13 +46,13 @@
         bigip_virtual_server:
             description: VIP for pool
             destination: 217.16.48.32
-       #     password: admin
-            name: New_VIP_1
-            pool: ProdPool_103011
+            password: admin
+            name: ProdVIP
+            pool: ProdPool
             port: 443
             server: 192.168.2.101
             snat: Automap
-       #     user: admin
+            user: admin
             all_profiles:
                  - http
                  - clientssl
