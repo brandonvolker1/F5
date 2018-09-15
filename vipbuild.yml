@@ -34,7 +34,7 @@
              host: 173.20.30.90
              name: ProdNode5
              password: admin
-             pool: ProdPool5
+             pool: ProdPool3
              port: 80
              server: 192.168.2.101
              user: admin
