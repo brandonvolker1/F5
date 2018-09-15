@@ -9,6 +9,7 @@
             user: admin
             password: admin
             include: device,device_group,system_info
+            validate_certs: no
         register: print_output
         delegate_to: localhost
             
