@@ -21,6 +21,23 @@
            - "SW Version: {{ system_info.product_information.product_version }}"
            - "Status: {{ device['/Common/' + system_info.system_information.host_name].failover_state }}"
         
+       - name: create an object on the active BIG-IP
+         when: device['/Common/' + system_info.system_information.host_name].failover_state == "HA_STATE_ACTIVE"
+         bigip_node:
+           host: 192.168.2.101
+           name: ansible-created-node-to-sync
+           server: "{{ ansible_host }}"
+           user: admin
+           password: admin
+           validate_certs: no
+         delegate_to: localhost
+         notify: Sync configuration from device to group 
+        
+        
+        
+        
+        
+        
         
      #   register: print_output
      # - debug: var=print_output.stdout_lines
