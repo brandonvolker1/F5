@@ -7,7 +7,7 @@
       - name: Create node
         bigip_node:
             host: 173.20.30.90
-            name: ProdNode3
+            name: ProdNode5
             password: admin
             server: 192.168.2.101
             user: admin
@@ -32,7 +32,7 @@
         bigip_pool_member:
              description: webserver-1
              host: 173.20.30.90
-             name: ProdNode3
+             name: ProdNode5
              password: admin
              pool: ProdPool5
              port: 80
