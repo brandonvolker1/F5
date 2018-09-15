@@ -6,8 +6,18 @@
   tasks:
       - name: Create node
         bigip_node:
-            host: 173.20.30.46, 172.16.2.10
-            name: ProdNode3, ProdNode4
+            host: 173.20.30.90
+            name: ProdNode3
+            password: admin
+            server: 192.168.2.101
+            user: admin
+            validate_certs: no
+        delegate_to: localhost
+        
+       - name: Create node
+        bigip_node:
+            host: 173.20.30.80
+            name: ProdNode5
             password: admin
             server: 192.168.2.101
             user: admin
@@ -20,26 +30,40 @@
              user: admin
              password: admin
              state: present
-             name: ProdPool2
+             name: ProdPool3
              partition: Common
              lb_method: round-robin
              monitor_type: and_list
              monitors:
                - http
         delegate_to: localhost
- 
+        
       - name: Add pool member
         bigip_pool_member:
              description: webserver-1
-             host: 173.20.30.46, 172.16.2.10
-             name: ProdNode3, ProdNode4
+             host: 173.20.30.80
+             name: ProdNode3
              password: admin
-             pool: ProdPool2
+             pool: ProdPool5
              port: 80
              server: 192.168.2.101
              user: admin
              validate_certs: no
         delegate_to: localhost
+
+      - name: Add pool member
+        bigip_pool_member:
+             description: webserver-1
+             host: 173.20.30.90
+             name: ProdNode3
+             password: admin
+             pool: ProdPool3
+             port: 80
+             server: 192.168.2.101
+             user: admin
+             validate_certs: no
+        delegate_to: localhost
+        
         
       - name: Create a VIP
         bigip_virtual_server:
@@ -47,7 +71,7 @@
             destination: 210.16.48.32
             password: admin
             name: ProdVIP
-            pool: ProdPool2
+            pool: ProdPool3
             port: 443
             server: 192.168.2.101
             snat: Automap
