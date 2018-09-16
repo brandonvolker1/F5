@@ -13,7 +13,7 @@
         #      - result[0] contains Version
             server: 192.168.2.101
        #     password: admin
-             user: root
+       #      user: root
             validate_certs: yes
         register: print_output
         delegate_to: localhost
