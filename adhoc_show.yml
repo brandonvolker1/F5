@@ -14,7 +14,7 @@
             server: 192.168.2.101
        #     password: admin
        #      user: root
-            validate_certs: yes
+            validate_certs: no
         register: print_output
         delegate_to: localhost
       - debug: var=print_output.stdout_lines
