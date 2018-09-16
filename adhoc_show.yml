@@ -9,8 +9,8 @@
         bigip_command:
             commands:
               - show sys version | grep Version
-            wait_for:
-              - result[0] contains Version
+        #    wait_for:
+        #      - result[0] contains Version
             server: 192.168.2.101
             password: admin
             user: admin
