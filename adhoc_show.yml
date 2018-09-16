@@ -12,9 +12,9 @@
         #    wait_for:
         #      - result[0] contains Version
             server: 192.168.2.101
-            password: admin
-            user: admin
-            validate_certs: no
+       #     password: admin
+       #     user: admin
+            validate_certs: yes
         register: print_output
         delegate_to: localhost
       - debug: var=print_output.stdout_lines
