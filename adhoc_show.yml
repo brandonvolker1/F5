@@ -1,7 +1,7 @@
 
 - name: Run ad-hoc commands
   hosts: 192.168.2.101
-  connection: cli
+  connection: ssh
   
   tasks:
   
