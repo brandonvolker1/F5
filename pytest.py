@@ -172,7 +172,7 @@ EXAMPLES = r'''
   bigip_node:
     server: 192.168.2.101
     user: admin
-    password: secret
+    password: admin
     state: present
     partition: Common
     host: 10.20.30.40
@@ -182,7 +182,7 @@ EXAMPLES = r'''
   bigip_node:
     server: 192.168.2.101
     user: admin
-    password: secret
+    password: admin
     state: present
     partition: Common
     host: 10.20.30.40
@@ -194,7 +194,7 @@ EXAMPLES = r'''
   bigip_node:
     server: 192.168.2.101
     user: admin
-    password: secret
+    password: admin
     state: present
     partition: Common
     name: 10.20.30.40
@@ -204,7 +204,7 @@ EXAMPLES = r'''
   bigip_node:
     server: 192.168.2.101
     user: admin
-    password: secret
+    password: admin
     state: absent
     partition: Common
     name: 10.20.30.40
@@ -213,7 +213,7 @@ EXAMPLES = r'''
   bigip_node:
     server: 192.168.2.101
     user: admin
-    password: secret
+    password: admin
     state: disabled
     partition: Common
     name: 10.20.30.40
@@ -222,7 +222,7 @@ EXAMPLES = r'''
   bigip_node:
     server: 192.168.2.101
     user: admin
-    password: secret
+    password: admin
     state: present
     partition: Common
     fqdn: foo.bar.com
